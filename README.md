@@ -101,6 +101,43 @@ image_path,label,split
 
 > Note: DICOM and standard image formats are both supported.
 
+### Google Colab setup (no Kaggle required)
+
+If you want to run everything in Colab instead of your personal PC, use this flow:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+```bash
+%cd /content
+!git clone <YOUR_REPO_URL> LLMFinalProject
+%cd /content/LLMFinalProject
+!bash scripts/colab_quickstart.sh
+```
+
+Then run any experiment (example: zero-shot):
+
+```bash
+!python scripts/run_experiment.py \
+  --config configs/experiments/zero_shot.yaml \
+  --num-workers 2 \
+  --output-root /content/drive/MyDrive/LLMFinalProject/results
+```
+
+You can also override the dataset CSV path in Colab without editing YAML files:
+
+```bash
+!python scripts/run_experiment.py \
+  --config configs/experiments/lora_r8.yaml \
+  --data-csv-path /content/LLMFinalProject/data/rsna/metadata.csv \
+  --num-workers 2 \
+  --output-root /content/drive/MyDrive/LLMFinalProject/results
+```
+
+> This project now uses Hugging Face dataset download via `scripts/download_dataset.py`; Kaggle is not required.
+
 ---
 
 ## 4) Quick start
@@ -164,4 +201,3 @@ This repo includes:
 - `implementation_steps.txt` (chronological implementation log)
 
 You can directly cite these in your final report appendix.
-
