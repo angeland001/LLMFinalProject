@@ -1,0 +1,26 @@
+AI-Assisted Development Prompt Log
+==================================
+
+1) "Help me design a clean, reproducible folder structure for a graduate ML final project comparing zero-shot, linear probing, LoRA, and full fine-tuning on CLIP for chest X-rays. Explain why each folder/file exists."
+
+2) "Guide me in creating a central YAML config for model, data paths, hyperparameters, and LoRA ranks so that I can run fair comparisons without hardcoding values."
+
+3) "Walk me through implementing reproducibility utilities (seeds, deterministic setup, and GPU/CPU fallback) and explain trade-offs in plain language."
+
+4) "Show me how to build a robust PyTorch dataset loader for RSNA CSV + images with checks for missing files and missing columns."
+
+5) "Explain how to adapt pretrained CLIP for binary classification using a small classifier head while keeping code modular for linear probe, LoRA, and full fine-tune."
+
+6) "Help me implement zero-shot CLIP evaluation using class prompts and template ensembling; explain how text/image embedding similarity is turned into probabilities."
+
+7) "Guide me in implementing a reusable training loop with BCEWithLogitsLoss, validation tracking, AUROC/F1/accuracy, and best-checkpoint selection."
+
+8) "Help me wire one experiment runner script that supports --method zero_shot | linear_probe | lora | full_finetune and saves comparable outputs."
+
+9) "Show me how to compute and log trainable parameter counts and percentages so I can defend PEFT efficiency claims in my final report."
+
+10) "Help me create an experiment summary CSV and plots comparing performance vs trainable parameters and runtime for report-ready visuals."
+
+11) "Review my README draft and make sure setup/run instructions are clear for local machine or Google Colab usage."
+
+12) "Suggest optional next steps to extend from CLIP+RSNA to BiomedCLIP and CheXpert without breaking the project structure."

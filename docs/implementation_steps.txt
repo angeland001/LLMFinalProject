@@ -1,0 +1,44 @@
+Implementation Steps (Chronological)
+===================================
+
+Step 1: Defined project scope
+- Primary scope: RSNA binary chest X-ray classification with CLIP ViT-B/16.
+- Methods: zero-shot, linear probe, LoRA, full fine-tuning.
+- Extension scope: BiomedCLIP/CheXpert (optional).
+
+Step 2: Created repository structure
+- Added modular directories for configs, data loading, models, trainers, evaluation, scripts, docs, and outputs.
+
+Step 3: Added dependency manifest
+- Created requirements.txt with PyTorch, Transformers, PEFT, sklearn, plotting, and utility libraries.
+
+Step 4: Added base experiment configuration
+- Created configs/base.yaml with dataset paths, model names, prompt templates, and training/LoRA hyperparameters.
+
+Step 5: Added reproducibility + I/O utilities
+- Implemented seed/device helpers and YAML/JSON/CSV utility functions.
+
+Step 6: Added metrics utilities
+- Implemented accuracy, F1, AUROC (with single-class guard), and trainable-parameter counting.
+
+Step 7: Added RSNA dataset pipeline
+- Implemented CSV-driven dataset and dataloaders with validation checks for missing files/columns.
+
+Step 8: Added CLIP model wrapper
+- Implemented CLIP processor/model loader, full freeze helper, LoRA attachment for vision encoder, and binary classifier head.
+
+Step 9: Added zero-shot evaluator
+- Implemented template-based prompt ensembling and image-text similarity scoring for inference.
+
+Step 10: Added supervised trainer
+- Implemented reusable epoch loop, BCEWithLogits training, validation model selection, test evaluation, runtime, and GPU memory tracking.
+
+Step 11: Added experiment runner
+- Implemented scripts/run_experiment.py to run a single method and append standardized outputs to outputs/experiment_summary.csv.
+
+Step 12: Added orchestration and plotting
+- Implemented scripts/run_all_experiments.py and scripts/plot_results.py for repeatable full comparison workflow.
+
+Step 13: Added documentation artifacts
+- Updated README.md with architecture, run commands, output conventions, guardrails, and extension ideas.
+- Added docs/ai_prompts_used.txt and this implementation_steps.txt for course submission evidence.

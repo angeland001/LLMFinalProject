@@ -1,0 +1,66 @@
+project:
+  name: vlm-peft-medical-xray
+  output_dir: outputs
+  log_dir: logs
+
+seed: 42
+device: auto
+
+model:
+  clip_model_name: openai/clip-vit-base-patch16
+  # Optional extension model for later:
+  biomedclip_model_name: microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+  max_text_length: 77
+
+data:
+  dataset_name: rsna_pneumonia
+  train_csv: data/rsna/train.csv
+  val_csv: data/rsna/val.csv
+  test_csv: data/rsna/test.csv
+  image_root: data/rsna/images
+  image_col: image_path
+  label_col: label
+  num_workers: 2
+  pin_memory: true
+  class_names:
+    - normal
+    - pneumonia
+  # Used for zero-shot prompt templates
+  prompt_templates:
+    - "a chest x-ray showing {}"
+    - "an x-ray image with {}"
+    - "a frontal chest radiograph with {}"
+
+train:
+  batch_size: 16
+  epochs: 5
+  lr: 5e-5
+  weight_decay: 1e-4
+  scheduler: cosine
+  warmup_ratio: 0.1
+  gradient_clip_norm: 1.0
+
+experiments:
+  zero_shot:
+    enabled: true
+  linear_probe:
+    enabled: true
+    lr: 1e-3
+    epochs: 8
+  lora:
+    enabled: true
+    ranks: [4, 8, 16]
+    alpha: 16
+    dropout: 0.05
+    target_modules:
+      - q_proj
+      - k_proj
+      - v_proj
+      - out_proj
+  full_finetune:
+    enabled: true
+
+tracking:
+  save_logits: false
+  save_predictions: true
+  save_checkpoint: true
