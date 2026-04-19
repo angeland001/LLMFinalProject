@@ -26,12 +26,26 @@ from src.utils.reproducibility import set_seed
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, required=True)
+    parser.add_argument("--data-csv-path", type=str, default=None)
+    parser.add_argument("--output-root", type=str, default=None)
+    parser.add_argument("--num-workers", type=int, default=None)
+    parser.add_argument("--device", type=str, default=None)
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     cfg = load_config(args.config)
+
+    if args.data_csv_path is not None:
+        cfg["data"]["csv_path"] = args.data_csv_path
+    if args.output_root is not None:
+        cfg["project"]["output_root"] = args.output_root
+    if args.num_workers is not None:
+        cfg["data"]["num_workers"] = args.num_workers
+    if args.device is not None:
+        cfg["device"] = args.device
+
     set_seed(int(cfg["seed"]))
 
     device = get_device(cfg.get("device", "auto"))
