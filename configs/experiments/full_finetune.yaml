@@ -1,4 +1,4 @@
-base_config: "configs/base.yaml"
+base_config: "../base.yaml"
 train:
   method: "full_finetune"
   epochs: 8

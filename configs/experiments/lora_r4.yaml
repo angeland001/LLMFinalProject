@@ -1,4 +1,4 @@
-base_config: "configs/base.yaml"
+base_config: "../base.yaml"
 train:
   method: "lora"
   epochs: 8

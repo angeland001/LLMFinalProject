@@ -13,6 +13,8 @@ def run_zero_shot(clip_model, processor, data_loader, prompts, device):
 
     text_inputs = processor(text=prompts, return_tensors="pt", padding=True).to(device)
     text_feats = clip_model.get_text_features(**text_inputs)
+    if not isinstance(text_feats, torch.Tensor):
+        text_feats = text_feats.pooler_output
     text_feats = text_feats / text_feats.norm(dim=-1, keepdim=True)
 
     ys, probs = [], []
@@ -21,6 +23,8 @@ def run_zero_shot(clip_model, processor, data_loader, prompts, device):
         y = batch["labels"].cpu().numpy()
 
         image_feats = clip_model.get_image_features(pixel_values=px)
+        if not isinstance(image_feats, torch.Tensor):
+            image_feats = image_feats.pooler_output
         image_feats = image_feats / image_feats.norm(dim=-1, keepdim=True)
 
         logits = image_feats @ text_feats.T
