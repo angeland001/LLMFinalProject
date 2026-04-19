@@ -1,0 +1,54 @@
+Implementation Steps Log
+
+1. Defined project scope and baseline assumptions:
+   - RSNA binary task first
+   - CLIP ViT-B/16 default backbone
+   - Optional BiomedCLIP/CheXpert extensions
+
+2. Designed modular repository structure:
+   - configs for reproducible experiments
+   - src package split by config/data/models/training/utils
+   - scripts for orchestration and summarization
+   - outputs for result artifacts
+
+3. Implemented configuration loading:
+   - base.yaml + experiment overrides
+   - recursive merge utility in src/config.py
+
+4. Implemented reproducibility and utilities:
+   - seed control (Python/NumPy/PyTorch)
+   - trainable parameter counting
+   - binary classification metric functions
+   - output logging helpers for json/yaml
+
+5. Implemented RSNA dataset loader:
+   - CSV-driven split support
+   - DICOM and standard image loading
+   - CLIP processor integration
+   - dataloader factory by split
+
+6. Implemented CLIP model setup:
+   - CLIP processor/model loading
+   - classifier wrapper on vision encoder
+   - encoder freezing helper
+   - LoRA injection helper for vision module
+
+7. Implemented training/evaluation flows:
+   - common supervised train/eval loop
+   - zero-shot inference module
+   - linear probe module
+   - LoRA fine-tune module
+   - full fine-tune module
+
+8. Implemented experiment scripts:
+   - run_experiment.py for one config
+   - run_all.py for sequential run execution
+   - summarize_results.py for table + plots
+
+9. Added user-facing documentation:
+   - README setup + commands + expected outputs
+   - requirements.txt dependency list
+
+10. Added AI-assistance documentation:
+    - ai_prompts_used.txt with guided learning prompts
+    - this implementation_steps.txt chronological log

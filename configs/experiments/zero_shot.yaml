@@ -1,0 +1,4 @@
+base_config: "configs/base.yaml"
+train:
+  method: "zero_shot"
+  batch_size: 64

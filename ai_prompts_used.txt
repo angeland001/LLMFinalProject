@@ -1,0 +1,21 @@
+AI-Assisted Development Prompts (Guided Tone)
+
+1) "Help me design a clean project architecture for comparing zero-shot, linear probe, LoRA, and full fine-tuning on CLIP for RSNA chest X-ray classification. Please explain why each folder and file exists so I can justify the design in my report."
+
+2) "Walk me through creating a reproducible config system with YAML files for base settings and experiment overrides. I want to understand how config merging works, not just copy code."
+
+3) "Show me how to build a robust RSNA dataset loader in PyTorch that supports DICOM and normal image files, and explain common pitfalls like path handling and class imbalance."
+
+4) "Guide me on implementing CLIP-based zero-shot classification with medical prompts and how to convert CLIP similarities into probabilities for binary metrics."
+
+5) "Help me implement linear probing correctly: freeze CLIP vision encoder, train only a classifier head, and evaluate with accuracy, AUROC, and F1."
+
+6) "Teach me how to add LoRA using PEFT to CLIP vision attention layers. I want a practical and explainable implementation for ranks 4, 8, and 16."
+
+7) "Help me create a fair full fine-tuning baseline with comparable preprocessing and evaluation so my ablation is scientifically reasonable."
+
+8) "Show me how to track parameter counts, trainable ratios, GPU memory usage, and training time so I can analyze efficiency vs performance."
+
+9) "Help me build scripts to run all experiments and summarize results into a comparison table and simple plots for my final report appendix."
+
+10) "Review my README instructions as if you were a TA: check that setup, dataset format, run commands, and reproducibility steps are clear for someone else to run."
