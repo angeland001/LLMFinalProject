@@ -1,0 +1,8 @@
+Method: lora
+Accuracy: 0.8317
+AUROC: 0.9583
+F1: 0.8800
+Trainable params: 64117763
+Trainable ratio (%): 42.768787
+Peak GPU mem (GB): 0.0000
+Train time (sec): 31375.88

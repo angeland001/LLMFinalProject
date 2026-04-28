@@ -1,0 +1,8 @@
+Method: linear_probe
+Accuracy: 0.7724
+AUROC: 0.9075
+F1: 0.8422
+Trainable params: 63822851
+Trainable ratio (%): 42.655982
+Peak GPU mem (GB): 0.0000
+Train time (sec): 10788.79

@@ -1,0 +1,18 @@
+{
+  "method": "zero_shot",
+  "metrics": {
+    "accuracy": 0.6169871794871795,
+    "f1": 0.7631318136769079,
+    "auroc": 0.5230330922638615
+  },
+  "history": {},
+  "timing": {
+    "train_time_sec": 0.0
+  },
+  "resources": {
+    "peak_gpu_mem_gb": 0.0,
+    "total_params": 149620737,
+    "trainable_params": 149620737,
+    "trainable_ratio_percent": 100.0
+  }
+}

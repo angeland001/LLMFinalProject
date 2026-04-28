@@ -1,0 +1,41 @@
+project:
+  name: vlm_peft_rsna
+  output_root: outputs/results
+seed: 42
+device: auto
+data:
+  dataset_name: rsna
+  csv_path: data/rsna/metadata.csv
+  image_size: 224
+  num_workers: 4
+  pin_memory: true
+model:
+  backbone: openai/clip-vit-base-patch16
+  use_biomedclip: false
+  num_classes: 2
+  class_names:
+  - normal
+  - pneumonia
+train:
+  method: lora
+  epochs: 8
+  batch_size: 16
+  lr: 2e-4
+  weight_decay: 1e-4
+  max_grad_norm: 1.0
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  bias: none
+  target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - out_proj
+zero_shot:
+  prompts:
+  - a chest x-ray showing normal lungs
+  - a chest x-ray showing pneumonia
+logging:
+  save_predictions: true

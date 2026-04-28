@@ -1,0 +1,8 @@
+Method: zero_shot
+Accuracy: 0.6170
+AUROC: 0.5230
+F1: 0.7631
+Trainable params: 149620737
+Trainable ratio (%): 100.000000
+Peak GPU mem (GB): 0.0000
+Train time (sec): 0.00

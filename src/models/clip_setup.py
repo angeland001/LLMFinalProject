@@ -42,4 +42,8 @@ def apply_lora_to_vision_module(vision_module: nn.Module, lora_cfg: dict):
         bias=lora_cfg.get("bias", "none"),
         target_modules=lora_cfg["target_modules"],
     )
-    return get_peft_model(vision_module, peft_config)
+    peft_model = get_peft_model(vision_module, peft_config)
+    # Return the inner model with LoRA layers injected directly into its Linear modules.
+    # The PEFT wrapper's forward() injects inputs_embeds=None which conflicts with CLIP's
+    # internal encoder call: encoder(inputs_embeds=hidden_states, **kwargs).
+    return peft_model.base_model.model

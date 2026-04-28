@@ -1,0 +1,8 @@
+Method: full_finetune
+Accuracy: 0.8141
+AUROC: 0.9583
+F1: 0.8697
+Trainable params: 149622275
+Trainable ratio (%): 100.000000
+Peak GPU mem (GB): 0.0000
+Train time (sec): 33261.78
